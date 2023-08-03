@@ -3,6 +3,13 @@
 ---
 
 ```c
+double log(double x); 
+```
+* 回傳ln(x)。
+
+---
+
+```c
 double log10(double x); 
 ```
 * 回傳log~10~(x)
@@ -13,7 +20,7 @@ double log10(double x);
 double pow(double x, double y); 
 ```
 * 回傳x^y^
-
+* 若想要的值為整數的次方，要特別注意浮點數誤差的問題。
 ---
 
 ```c
@@ -26,7 +33,8 @@ double sqrt(double x);
 ```c
 double fabs(double x); 
 ```
-* 還傳x的絕對值
+* 回傳x的絕對值 (浮點數版本)。
+* 處理整數絕對值要使用 `int abs(int x);` (在`stdlib.h`)。
 
 ---
 

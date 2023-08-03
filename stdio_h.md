@@ -5,7 +5,7 @@
 ```c
 EOF
 ```
-* 表⽰資料流結束或資料流讀取錯誤的值
+* 表⽰資料流結束或資料流讀取錯誤的值。
 
 ---
 
@@ -14,25 +14,25 @@ stdin
 stdout 
 stderr 
 ```
-* 指向 `標準輸入字元流` `標準輸出字元流` `標準錯誤輸出字元流` 的檔案指標
-* 程式開始執⾏時會被⾃動開啟
+* 指向 `標準輸入字元流` , `標準輸出字元流` , `標準錯誤輸出字元流` 的檔案指標。
+* 程式開始執⾏時會被⾃動開啟。
 
 ---
 
 ```c
 struct FILE
 ```
-* 含有控制字元流所需資訊的物件類型
+* 含有控制字元流所需資訊的物件類型。
 
 ---
 
 ```c
 struct FILE* fopen(const char* filename, const char* mode); 
 ```
-* 開啟檔名為 `filename` 的檔案並傳回字元流，失敗時回傳 `NULL`
-* `mode` 如下
+* 開啟檔名為 `filename` 的檔案並傳回字元流，失敗時回傳 `NULL`。
+* 可選擇的 `mode` 如下 :
 
-    | Mode | Description |
+    | 模式 | 描述 |
     | ---- | ----------- |
     | r | 以純文字檔案⽅式讀取 |
     | w | 以純文字檔案⽅式寫入 |
@@ -49,7 +49,7 @@ struct FILE* fopen(const char* filename, const char* mode);
 int fclose(struct FILE* stream); 
 ```
 * 關閉 `stream` 指向的字元流（如果是輸出⽤字元流，則先釋出緩衝區）。
-* 錯誤時傳回 `EOF`，否則傳回 `0`
+* 錯誤時傳回 `EOF`，否則傳回 `0`。
 
 ---
 
@@ -57,19 +57,18 @@ int fclose(struct FILE* stream);
 size_t fread(void* ptr, size_t size, size_t nobj, struct FILE* stream);
 size_t fwrite(const void* ptr, size_t size, size_t nobj, struct FILE* stream); 
 ```
-* 從檔案流 `stream` 中讀取/寫入至多 `nobj` 個大小為 `size` 的物件
-* 回傳成功讀取/寫入的物件數量
+* 從檔案流 `stream` 中讀取/寫入至多 `nobj` 個大小為 `size` 的物件。
+* 回傳成功讀取/寫入的物件數量。
 
 ---
 
 ```c
 int fprintf(struct FILE* stream, const char* format, ...); 
 ```
-* 根據字串 `format` 轉換參數，並且輸出到字元流 `stream`
-* 回傳輸出的字元數⽬，發⽣錯誤時傳回負數
-
-* 格式參數
-    | character | Description |
+* 根據字串 `format` 轉換參數，並且輸出到字元流 `stream`。
+* 回傳輸出的字元數⽬，發⽣錯誤時傳回負數。
+* 格式參數 :
+    | 關鍵字 | 描述 |
     | ---- | ----------- |
     | %i, %d  | int (十進位) |
     | %o | int (八進位) |
@@ -87,15 +86,16 @@ int fprintf(struct FILE* stream, const char* format, ...);
 ```c
 int printf(const char* format, ...); 
 ```
-* 根據字串 `format` 轉換參數，並且輸出到字元流 `stdout`
-* 等價於 `fprintf(stdout, format, ...);`
+* 根據字串 `format` 轉換參數，並且輸出到字元流 `stdout`。
+* 等價於 `fprintf(stdout, format, ...);`。
 
 ---
 
 ```c
 int sprintf(char* s, const char* format, ...);
 ```
-* 根據字串 `format` 轉換參數，並且輸出到字串 `s`
+* 根據字串 `format` 轉換參數，並且輸出到字串 `s`。
+* 需確保 `s` 的長度能包含所有的輸出。
 
 ---
 
@@ -103,23 +103,23 @@ int sprintf(char* s, const char* format, ...);
 int fscanf(struct FILE* stream, const char* format, ...); 
 ```
 
-* 根據字串 `format` 轉換參數，並且從字元流 `stream` 讀入到變數中
-* 所有的格式參數必須為**指標**型態
+* 根據字串 `format` 轉換參數，並且從字元流 `stream` 讀入到變數中。
+* 所有的格式參數必須為**指標**型態。
 
 ---
 
 ```c
 int scanf(const char* format, ...); 
 ```
-* 根據字串 `format` 轉換參數，並且從字元流 `sdtin` 讀入到變數中
-* 等價於 `fscanf(stdin, format, ...);`
+* 根據字串 `format` 轉換參數，並且從字元流 `stdin` 讀入到變數中。
+* 等價於 `fscanf(stdin, format, ...);`。
 
 ---
 
 ```c
 int sscanf(char* s, const char* format, ...);
 ```
-* 根據字串 `format` 轉換參數，並且從字串 `s` 讀入到變數中
+* 根據字串 `format` 轉換參數，並且從字串 `s` 讀入到變數中。
 
 ---
 
@@ -127,8 +127,8 @@ int sscanf(char* s, const char* format, ...);
 int fgetc(struct FILE* stream); 
 int fputc(int c, struct FILE* stream);
 ```
-* 從檔案流 `stream` 中讀取下一個字元/寫入字元 `c`
-* 發生錯誤或讀到檔案尾端時回傳 `EOF`
+* 從檔案流 `stream` 中讀取下一個字元 / 寫入字元 `c`。
+* 發生錯誤或讀到檔案尾端時回傳 `EOF`。
 
 ---
 
@@ -136,8 +136,8 @@ int fputc(int c, struct FILE* stream);
 char* fgets(char* s, int n, struct FILE* stream); 
 char* fputs(const char* s, struct FILE* stream);
 ```
-* 從檔案流 `stream` 中讀取至多n-1個字元/寫入字串 `s`
-* 錯誤或讀到檔案結尾時傳回 `EOF`，否則傳回 `s`
+* 從檔案流 `stream` 中讀取至多 `n-1` 個字元 / 寫入字串 `s`。
+* 錯誤或讀到檔案結尾時傳回 `EOF`，否則傳回 `s`。
 
 ---
 
@@ -146,26 +146,26 @@ char* fputs(const char* s, struct FILE* stream);
 char* gets(char* s);
 int puts(const char* s); 
 ```
-* 在檔案流 `stdio` 中讀入/寫入一行
-* 發生錯誤或讀到檔案尾端時回傳 `NULL` / `EOF` 
+* 在檔案流 `stdio` 中讀入 / 寫入一行。
+* 發生錯誤或讀到檔案尾端時回傳 `NULL` / `EOF` 。
 
 ---
 
 ```c
 int fseek(struct FILE* stream, long offset, int origin); 
 ```
-* 變更檔案指標的位置到 `origin + offset` 的位置
-* `origin` 有三種值可選
-    | name | Description |
+* 變更檔案指標的位置到 `origin + offset` 的位置。
+* `origin` 有三種模式可選 :
+    | 模式 | 描述 |
     | ---- | ----------- |
     | SEEK_SET | 檔案開頭 |
     | SEEK_CUR | 檔案指標目前位置 |
     | SEEK_END | 檔案尾端 |
-* 執行成功返回 `0`，否則返回非零值
+* 執行成功返回 `0`，否則返回非零值。
 
 ---
 
 ```c
 int feof(struct FILE* stream);
 ```
-* 如果 `stream` 遇到 `EOF` ，回傳非0值
+* 如果 `stream` 遇到 `EOF` ，回傳非0值。

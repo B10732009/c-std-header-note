@@ -2,13 +2,36 @@
 
 ---
 
-使用 `<type>_<MAX>` 取得最大值; `<type>_<MIN>` 取得最小值
+可取得單一型態的最大值或最小值。
 
-| Type Name | Type |
-| ---- | ----------- |
-| CHAR | char |
-| UCHAR | unsigned char |
-| INT | int |
-| UINT | unsigned int |
-| LONG | long |
-| ULONG | unsigned long |
+<table>
+  <thead>
+    <tr>
+      <th>型態</th>
+      <th>最大值</th>
+      <th>最小值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>char</td>
+      <td>CHAR_MAX</td>
+      <td>CHAR_MIN</td>
+    </tr>
+    <tr>
+      <td>unsigned char</td>
+      <td>UCHAR_MAX</td>
+      <td>(0)</td>
+    </tr>
+    <tr>
+      <td>int</td>
+      <td>INT_MAX</td>
+      <td>INT_MIN</td>
+    </tr>
+    <tr>
+      <td>unsigned int</td>
+      <td>UINT_MAX</td>
+      <td>(0)</td>
+    </tr>
+  </tbody>
+</table>
